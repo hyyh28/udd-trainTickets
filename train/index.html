@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <title>火车票</title>
+    <link href="http://www.uddtrip.com/css/base.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/train.css">
+    <link rel="stylesheet" href="static/css/calendar.css">
+    <link rel="stylesheet" href="static/css/sprite/sprite.css">
+    <link rel="shortcut icon" type="image/x-icon" href="http://www.uddtrip.com/img/favicon.ico" media="screen" />
+</head>
+
+<body ng-app='train' ng-controller='main' ng-click="searchblur(cf_value,$event)">
+    <div class="main">
+        <!--搜索和banner-->
+        <div class="clearfix">
+            <div class="fl train_search">
+                <div class="train_sea_t"><i class="icon icon-1"></i>国内火车站</div>
+                <div class="train_sea_c">
+                    <div class="train_sea_city">
+                        <span class="change icon icon-huan" ng-click="citychange()"></span>
+                        <!--出发城市-->
+                        <div class="train_city_put">
+                            <input type="text" id="city_start" name='{{curdata1}}' ng-model='cf_value1' ng-class="{true:'cur',false:''}[searchborder1]" ng-change="searchcity1(cf_value1)" ng-focus="searchfocus1(cf_value1)" ng-keydown="citykeydown($event)" ng-click="inputClick()">
+                            <span class="train_city_ico1" ng-class="{true:'city_show',flase:''}[searchflagfalse1]" ng-show="searchflagfalse1">出发城市</span>
+                            <span class="train_city_ico2" ng-show="searchflagtrue1">出发城市</span>
+                            <div class="city_errors"><i></i>请输入出发城市名称</div>
+                            <!--城市列表-->
+                            <div class="train_city_list" ng-class="{true:'city_show',flase:''}[cityfalse1]" ng-show="cityfalse1">
+                                <i class="icon icon-close" ng-click="cityclose();"></i>
+                                <p class="ps">支持中文/拼音/简拼输入</p>
+                                <div class="train_eng"><span ng-repeat="citylei in citytab" ng-bind="citylei" ng-class="{true:'cur',false:''}[$index==cityindex]" ng-click="citytabck($index)"></span></div>
+                                <div class="train_ct pb5" ng-include="cityurl1">
+                                    <!--热门-->
+                                    <script type="text/ng-template" id="hot1.html">
+                                        <div class="train_cla train_cla1">
+                                            <span href="#" title="北京" data="BJP" ng-click="searchcityclick1('北京','BJP');">北京</span>
+                                            <span href="#" title="上海" data="SHH" ng-click="searchcityclick1('上海','SHH');">上海</span>
+                                            <span href="#" title="天津" data="TJP" ng-click="searchcityclick1('天津','TJP');">天津</span>
+                                            <span href="#" title="重庆" data="CQW" ng-click="searchcityclick1('重庆','CQW');">重庆</span>
+                                            <span href="#" title="长沙" data="CSQ" ng-click="searchcityclick1('长沙','CSQ');">长沙</span>
+                                            <span href="#" title="长春" data="CCT" ng-click="searchcityclick1('长春','CCT');">长春</span>
+                                            <span href="#" title="成都" data="CDW" ng-click="searchcityclick1('成都','CDW');">成都</span>
+                                            <span href="#" title="福州" data="FZS" ng-click="searchcityclick1('福州','FZS');">福州</span>
+                                            <span href="#" title="广州" data="GZQ" ng-click="searchcityclick1('广州','GZQ');">广州</span>
+                                            <span href="#" title="贵阳" data="GIW" ng-click="searchcityclick1('贵阳','GIW');">贵阳</span>
+                                            <span href="#" title="呼和浩特" data="HHC" ng-click="searchcityclick1('呼和浩特','HHC');">呼和浩特</span>
+                                            <span href="#" title="哈尔滨" data="HBB" ng-click="searchcityclick1('哈尔滨','HBB');">哈尔滨</span>
+                                            <span href="#" title="合肥" data="HFH" ng-click="searchcityclick1('合肥','HFH');">合肥</span>
+                                            <span href="#" title="杭州" data="HZH" ng-click="searchcityclick1('杭州','HZH');">杭州</span>
+                                            <span href="#" title="海口" data="VUQ" ng-click="searchcityclick1('海口','VUQ');">海口</span>
+                                            <span href="#" title="济南" data="JNK" ng-click="searchcityclick1('济南','JNK');">济南</span>
+                                            <span href="#" title="昆明" data="KMM" ng-click="searchcityclick1('昆明','KMM');">昆明</span>
+                                            <span href="#" title="拉萨" data="LSO" ng-click="searchcityclick1('拉萨','LSO');">拉萨</span>
+                                            <span href="#" title="兰州" data="LZJ" ng-click="searchcityclick1('兰州','LZJ');">兰州</span>
+                                            <span href="#" title="南宁" data="NNZ" ng-click="searchcityclick1('南宁','NNZ');">南宁</span>
+                                            <span href="#" title="南京" data="NJH" ng-click="searchcityclick1('南京','NJH');">南京</span>
+                                            <span href="#" title="南昌" data="NCG" ng-click="searchcityclick1('南昌','NCG');">南昌</span>
+                                            <span href="#" title="沈阳" data="SYT" ng-click="searchcityclick1('沈阳','SYT');">沈阳</span>
+                                            <span href="#" title="石家庄" data="SJP" ng-click="searchcityclick1('石家庄','SJP');">石家庄</span>
+                                            <span href="#" title="太原" data="TYV" ng-click="searchcityclick1('太原','TYV');">太原</span>
+                                            <span href="#" title="乌鲁木齐南" data="WMR" ng-click="searchcityclick1('乌鲁木齐南','WMR');">乌鲁木齐南</span>
+                                            <span href="#" title="武汉" data="WHN" ng-click="searchcityclick1('武汉','WHN');">武汉</span>
+                                            <span href="#" title="西宁" data="XNO" ng-click="searchcityclick1('西宁','XNO');">西宁</span>
+                                            <span href="#" title="西安" data="XAY" ng-click="searchcityclick1('西安','XAY');">西安</span>
+                                            <span href="#" title="银川" data="YIJ" ng-click="searchcityclick1('银川','YIJ');">银川</span>
+                                            <span href="#" title="郑州" data="ZZF" ng-click="searchcityclick1('郑州','ZZF');">郑州</span>
+                                            <span href="#" title="深圳" data="SZQ" ng-click="searchcityclick1('深圳','SZQ');">深圳</span>
+                                            <span href="#" title="厦门" data="XMS" ng-click="searchcityclick1('厦门','XMS');">厦门</span>
+                                        </div>
+                                    </script>
+                                    <!--热门结束-->
+                                    <!--ABCD-->
+                                    <script type="text/ng-template" id="one1.html">
+                                        <div class="train_cla">
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_1_page<5">A</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in a" ng-bind="item.split('|')[1]" ng-if="$index <= tab_1_page*12 && $index > (tab_1_page-1)*12" ng-click="searchcityclick1(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_1_page<11">B</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in b" ng-bind="item.split('|')[1]" ng-if="$index <= tab_1_page*12 && $index > (tab_1_page-1)*12" ng-click="searchcityclick1(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_1_page<11">C</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in c" ng-bind="item.split('|')[1]" ng-if="$index <= tab_1_page*12 && $index > (tab_1_page-1)*12" ng-click="searchcityclick1(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_1_page<15">D</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in d" ng-bind="item.split('|')[1]" ng-if="$index <= tab_1_page*12 && $index > (tab_1_page-1)*12" ng-click="searchcityclick1(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <!--分页-->
+                                            <div class="city_page"><a href="javascript:void(0)" ng-click="prev_tab1page()">&lt;上一页</a><i>|</i><a href="javascript:void(0)" ng-click="next_tab1page()">下一页&gt;</a></div>
+                                            <!--分页结束-->
+                                        </div>
+                                    </script>
+                                    <!--ABCD结束-->
+                                    <!--EFGH-->
+                                    <script type="text/ng-template" id="two1.html">
+                                        <div class="train_cla">
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_2_page<3">E</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in e" ng-bind="item.split('|')[1]" ng-if="$index <= tab_2_page*12 && $index > (tab_2_page-1)*12" ng-click="searchcityclick1(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_2_page<7">F</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in f" ng-bind="item.split('|')[1]" ng-if="$index <= tab_2_page*12 && $index > (tab_2_page-1)*12" ng-click="searchcityclick1(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_2_page<11">G</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in g" ng-bind="item.split('|')[1]" ng-if="$index <= tab_2_page*12 && $index > (tab_2_page-1)*12" ng-click="searchcityclick1(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_2_page<18">H</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in h" ng-bind="item.split('|')[1]" ng-if="$index <= tab_2_page*12 && $index > (tab_2_page-1)*12" ng-click="searchcityclick1(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <!--分页-->
+                                            <div class="city_page"><a href="javascript:void(0)" ng-click="prev_tab2page()">&lt;上一页</a><i>|</i><a href="javascript:void(0)" ng-click="next_tab2page()">下一页&gt;</a></div>
+                                            <!--分页结束-->
+                                        </div>
+                                    </script>
+                                    <!--EFGH结束-->
+                                    <!--JKLM-->
+                                    <script type="text/ng-template" id="three1.html">
+                                        <div class="train_cla">
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_3_page<13">J</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in j" ng-bind="item.split('|')[1]" ng-if="$index <= tab_3_page*12 && $index > (tab_3_page-1)*12" ng-click="searchcityclick1(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_3_page<4">K</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in k" ng-bind="item.split('|')[1]" ng-if="$index <= tab_3_page*12 && $index > (tab_3_page-1)*12" ng-click="searchcityclick1(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_3_page<19">L</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in l" ng-bind="item.split('|')[1]" ng-if="$index <= tab_3_page*12 && $index > (tab_3_page-1)*12" ng-click="searchcityclick1(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_3_page<8">M</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in m" ng-bind="item.split('|')[1]" ng-if="$index <= tab_3_page*12 && $index > (tab_3_page-1)*12" ng-click="searchcityclick1(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <!--分页-->
+                                            <div class="city_page"><a href="javascript:void(0)" ng-click="prev_tab3page()">&lt;上一页</a><i>|</i><a href="javascript:void(0)" ng-click="next_tab3page()">下一页&gt;</a></div>
+                                            <!--分页结束-->
+                                        </div>
+                                    </script>
+                                    <!--JKLM结束-->
+                                    <!--NOPQR-->
+                                    <script type="text/ng-template" id="four1.html">
+                                        <div class="train_cla">
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_4_page<8">N</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in n" ng-bind="item.split('|')[1]" ng-if="$index <= tab_4_page*12 && $index > (tab_4_page-1)*12" ng-click="searchcityclick1(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_4_page<1">O</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in o" ng-bind="item.split('|')[1]" ng-if="$index <= tab_4_page*12 && $index > (tab_4_page-1)*12" ng-click="searchcityclick1(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_4_page<8">P</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in p" ng-bind="item.split('|')[1]" ng-if="$index <= tab_4_page*12 && $index > (tab_4_page-1)*12" ng-click="searchcityclick1(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_4_page<9">Q</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in q" ng-bind="item.split('|')[1]" ng-if="$index <= tab_4_page*12 && $index > (tab_4_page-1)*12" ng-click="searchcityclick1(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_4_page<3">R</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in r" ng-bind="item.split('|')[1]" ng-if="$index <= tab_4_page*12 && $index > (tab_4_page-1)*12" ng-click="searchcityclick1(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <!--分页-->
+                                            <div class="city_page"><a href="javascript:void(0)" ng-click="prev_tab4page()">&lt;上一页</a><i>|</i><a href="javascript:void(0)" ng-click="next_tab4page()">下一页&gt;</a></div>
+                                            <!--分页结束-->
+                                        </div>
+                                    </script>
+                                    <!--NOPQR结束-->
+                                    <!--STUWX-->
+                                    <script type="text/ng-template" id="five1.html">
+                                        <div class="train_cla">
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_5_page<17">S</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in s" ng-bind="item.split('|')[1]" ng-if="$index <= tab_5_page*12 && $index > (tab_5_page-1)*12" ng-click="searchcityclick1(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_5_page<11">T</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in t" ng-bind="item.split('|')[1]" ng-if="$index <= tab_5_page*12 && $index > (tab_5_page-1)*12" ng-click="searchcityclick1(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_5_page<1">U</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in u" ng-bind="item.split('|')[1]" ng-if="$index <= tab_5_page*12 && $index > (tab_5_page-1)*12" ng-click="searchcityclick1(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_5_page<12">W</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in w" ng-bind="item.split('|')[1]" ng-if="$index <= tab_5_page*12 && $index > (tab_5_page-1)*12" ng-click="searchcityclick1(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_5_page<17">X</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in x" ng-bind="item.split('|')[1]" ng-if="$index <= tab_5_page*12 && $index > (tab_5_page-1)*12" ng-click="searchcityclick1(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <!--分页-->
+                                            <div class="city_page"><a href="javascript:void(0)" ng-click="prev_tab5page()">&lt;上一页</a><i>|</i><a href="javascript:void(0)" ng-click="next_tab5page()">下一页&gt;</a></div>
+                                            <!--分页结束-->
+                                        </div>
+                                    </script>
+                                    <!--TUWX结束-->
+                                    <!--YZ-->
+                                    <script type="text/ng-template" id="six1.html">
+                                        <div class="train_cla">
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_6_page<19">Y</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in y" ng-bind="item.split('|')[1]" ng-if="$index <= tab_6_page*12 && $index > (tab_6_page-1)*12" ng-click="searchcityclick1(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_6_page<12">Z</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in z" ng-bind="item.split('|')[1]" ng-if="$index <= tab_6_page*12 && $index > (tab_6_page-1)*12" ng-click="searchcityclick1(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <!--分页-->
+                                            <div class="city_page"><a href="javascript:void(0)" ng-click="prev_tab6page()">&lt;上一页</a><i>|</i><a href="javascript:void(0)" ng-click="next_tab6page()">下一页&gt;</a></div>
+                                            <!--分页结束-->
+                                        </div>
+                                    </script>
+                                    <!--YZ结束-->
+                                </div>
+                            </div>
+                            <!--城市列表结束-->
+                            <!--城市搜索-->
+                            <div class="train_city_search" ng-class="{true:'city_show',flase:''}[searchflag1]" ng-show="searchflag1">
+                                <div class="top_cities">按“<span ng-bind="cf_value1"></span>”检索</div>
+                                <div class="panel_cities">
+                                    <div class="cityline clearfix" ng-class="{true:'cur',false:''}[$index==upindex]" ng-repeat="txt in sercharr" ng-if="$index < pagenum*6 && $index >= (pagenum-1)*6" ng-mousemove="citymousemove($index)" ng-click="searchcityclick1(txt.split('|')[1],txt.split('|')[2]);">
+                                        <span class="fl" ng-bind="txt.split('|')[1]"></span>
+                                        <span class="fr" ng-bind="txt.split('|')[3]"></span>
+                                        <input type="hidden" ng-bind="txt.split('|')[2]">
+                                    </div>
+                                </div>
+                                <div id="flip_cities">
+                                    <div class="citypage">
+                                        <a href="#" class="pagetxt" ng-click="prev_serchpage('start');">&lt;&lt;上一页</a>
+                                        <a href="" class="pagetxt" ng-click="next_serchpage('start');">下一页&gt;&gt;</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--城市搜索结束-->
+                        </div>
+                        <!--出发城市结束-->
+                        <!--到达城市-->
+                        <div class="train_city_put">
+                            <input type="text" id="city_end" name='{{curdata2}}' ng-model='cf_value2' ng-class="{true:'cur',false:''}[searchborder2]" ng-change="searchcity2(cf_value2)" ng-focus="searchfocus2(cf_value2)" ng-keydown="citykeydown($event)" ng-click="inputClick()">
+                            <span class="train_city_ico1" ng-class="{true:'city_show',flase:''}[searchflagfalse2]" ng-show="searchflagfalse2">到达城市</span>
+                            <span class="train_city_ico2" ng-show="searchflagtrue2">到达城市</span>
+                            <div class="city_errors"><i></i>请输入到达城市名称</div>
+                            <!--城市列表-->
+                            <div class="train_city_list" ng-class="{true:'city_show',flase:''}[cityfalse2]" ng-show="cityfalse2">
+                                <i class="icon icon-close" ng-click="cityclose();"></i>
+                                <p class="ps">支持中文/拼音/简拼输入</p>
+                                <div class="train_eng"><span ng-repeat="citylei in citytab" ng-bind="citylei" ng-class="{true:'cur',false:''}[$index==cityindex]" ng-click="citytabck($index)"></span></div>
+                                <div class="train_ct pb5" ng-include="cityurl2">
+                                    <!--热门-->
+                                    <script type="text/ng-template" id="hot2.html">
+                                        <div class="train_cla train_cla1">
+                                            <span href="#" title="北京" data="BJP" ng-click="searchcityclick2('北京','BJP');">北京</span>
+                                            <span href="#" title="上海" data="SHH" ng-click="searchcityclick2('上海','SHH');">上海</span>
+                                            <span href="#" title="天津" data="TJP" ng-click="searchcityclick2('天津','TJP');">天津</span>
+                                            <span href="#" title="重庆" data="CQW" ng-click="searchcityclick2('重庆','CQW');">重庆</span>
+                                            <span href="#" title="长沙" data="CSQ" ng-click="searchcityclick2('长沙','CSQ');">长沙</span>
+                                            <span href="#" title="长春" data="CCT" ng-click="searchcityclick2('长春','CCT');">长春</span>
+                                            <span href="#" title="成都" data="CDW" ng-click="searchcityclick2('成都','CDW');">成都</span>
+                                            <span href="#" title="福州" data="FZS" ng-click="searchcityclick2('福州','FZS');">福州</span>
+                                            <span href="#" title="广州" data="GZQ" ng-click="searchcityclick2('广州','GZQ');">广州</span>
+                                            <span href="#" title="贵阳" data="GIW" ng-click="searchcityclick2('贵阳','GIW');">贵阳</span>
+                                            <span href="#" title="呼和浩特" data="HHC" ng-click="searchcityclick2('呼和浩特','HHC');">呼和浩特</span>
+                                            <span href="#" title="哈尔滨" data="HBB" ng-click="searchcityclick2('哈尔滨','HBB');">哈尔滨</span>
+                                            <span href="#" title="合肥" data="HFH" ng-click="searchcityclick2('合肥','HFH');">合肥</span>
+                                            <span href="#" title="杭州" data="HZH" ng-click="searchcityclick2('杭州','HZH');">杭州</span>
+                                            <span href="#" title="海口" data="VUQ" ng-click="searchcityclick2('海口','VUQ');">海口</span>
+                                            <span href="#" title="济南" data="JNK" ng-click="searchcityclick2('济南','JNK');">济南</span>
+                                            <span href="#" title="昆明" data="KMM" ng-click="searchcityclick2('昆明','KMM');">昆明</span>
+                                            <span href="#" title="拉萨" data="LSO" ng-click="searchcityclick2('拉萨','LSO');">拉萨</span>
+                                            <span href="#" title="兰州" data="LZJ" ng-click="searchcityclick2('兰州','LZJ');">兰州</span>
+                                            <span href="#" title="南宁" data="NNZ" ng-click="searchcityclick2('南宁','NNZ');">南宁</span>
+                                            <span href="#" title="南京" data="NJH" ng-click="searchcityclick2('南京','NJH');">南京</span>
+                                            <span href="#" title="南昌" data="NCG" ng-click="searchcityclick2('南昌','NCG');">南昌</span>
+                                            <span href="#" title="沈阳" data="SYT" ng-click="searchcityclick2('沈阳','SYT');">沈阳</span>
+                                            <span href="#" title="石家庄" data="SJP" ng-click="searchcityclick2('石家庄','SJP');">石家庄</span>
+                                            <span href="#" title="太原" data="TYV" ng-click="searchcityclick2('太原','TYV');">太原</span>
+                                            <span href="#" title="乌鲁木齐南" data="WMR" ng-click="searchcityclick2('乌鲁木齐南','WMR');">乌鲁木齐南</span>
+                                            <span href="#" title="武汉" data="WHN" ng-click="searchcityclick2('武汉','WHN');">武汉</span>
+                                            <span href="#" title="西宁" data="XNO" ng-click="searchcityclick2('西宁','XNO');">西宁</span>
+                                            <span href="#" title="西安" data="XAY" ng-click="searchcityclick2('西安','XAY');">西安</span>
+                                            <span href="#" title="银川" data="YIJ" ng-click="searchcityclick2('银川','YIJ');">银川</span>
+                                            <span href="#" title="郑州" data="ZZF" ng-click="searchcityclick2('郑州','ZZF');">郑州</span>
+                                            <span href="#" title="深圳" data="SZQ" ng-click="searchcityclick2('深圳','SZQ');">深圳</span>
+                                            <span href="#" title="厦门" data="XMS" ng-click="searchcityclick2('厦门','XMS');">厦门</span>
+                                        </div>
+                                    </script>
+                                    <!--热门结束-->
+                                    <!--ABCD-->
+                                    <script type="text/ng-template" id="one2.html">
+                                        <div class="train_cla">
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_1_page<5">A</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in a" ng-bind="item.split('|')[1]" ng-if="$index <= tab_1_page*12 && $index > (tab_1_page-1)*12" ng-click="searchcityclick2(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_1_page<11">B</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in b" ng-bind="item.split('|')[1]" ng-if="$index <= tab_1_page*12 && $index > (tab_1_page-1)*12" ng-click="searchcityclick2(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_1_page<11">C</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in c" ng-bind="item.split('|')[1]" ng-if="$index <= tab_1_page*12 && $index > (tab_1_page-1)*12" ng-click="searchcityclick2(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_1_page<15">D</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in d" ng-bind="item.split('|')[1]" ng-if="$index <= tab_1_page*12 && $index > (tab_1_page-1)*12" ng-click="searchcityclick2(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <!--分页-->
+                                            <div class="city_page"><a href="javascript:void(0)" ng-click="prev_tab1page()">&lt;上一页</a><i>|</i><a href="javascript:void(0)" ng-click="next_tab1page()">下一页&gt;</a></div>
+                                            <!--分页结束-->
+                                        </div>
+                                    </script>
+                                    <!--ABCD结束-->
+                                    <!--EFGH-->
+                                    <script type="text/ng-template" id="two2.html">
+                                        <div class="train_cla">
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_2_page<3">E</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in e" ng-bind="item.split('|')[1]" ng-if="$index <= tab_2_page*12 && $index > (tab_2_page-1)*12" ng-click="searchcityclick2(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_2_page<7">F</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in f" ng-bind="item.split('|')[1]" ng-if="$index <= tab_2_page*12 && $index > (tab_2_page-1)*12" ng-click="searchcityclick2(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_2_page<11">G</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in g" ng-bind="item.split('|')[1]" ng-if="$index <= tab_2_page*12 && $index > (tab_2_page-1)*12" ng-click="searchcityclick2(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_2_page<18">H</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in h" ng-bind="item.split('|')[1]" ng-if="$index <= tab_2_page*12 && $index > (tab_2_page-1)*12" ng-click="searchcityclick2(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <!--分页-->
+                                            <div class="city_page"><a href="javascript:void(0)" ng-click="prev_tab2page()">&lt;上一页</a><i>|</i><a href="javascript:void(0)" ng-click="next_tab2page()">下一页&gt;</a></div>
+                                            <!--分页结束-->
+                                        </div>
+                                    </script>
+                                    <!--EFGH结束-->
+                                    <!--JKLM-->
+                                    <script type="text/ng-template" id="three2.html">
+                                        <div class="train_cla">
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_3_page<13">J</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in j" ng-bind="item.split('|')[1]" ng-if="$index <= tab_3_page*12 && $index > (tab_3_page-1)*12" ng-click="searchcityclick2(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_3_page<4">K</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in k" ng-bind="item.split('|')[1]" ng-if="$index <= tab_3_page*12 && $index > (tab_3_page-1)*12" ng-click="searchcityclick2(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_3_page<19">L</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in l" ng-bind="item.split('|')[1]" ng-if="$index <= tab_3_page*12 && $index > (tab_3_page-1)*12" ng-click="searchcityclick2(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_3_page<8">M</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in m" ng-bind="item.split('|')[1]" ng-if="$index <= tab_3_page*12 && $index > (tab_3_page-1)*12" ng-click="searchcityclick2(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <!--分页-->
+                                            <div class="city_page"><a href="javascript:void(0)" ng-click="prev_tab3page()">&lt;上一页</a><i>|</i><a href="javascript:void(0)" ng-click="next_tab3page()">下一页&gt;</a></div>
+                                            <!--分页结束-->
+                                        </div>
+                                    </script>
+                                    <!--JKLM结束-->
+                                    <!--NOPQR-->
+                                    <script type="text/ng-template" id="four2.html">
+                                        <div class="train_cla">
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_4_page<8">N</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in n" ng-bind="item.split('|')[1]" ng-if="$index <= tab_4_page*12 && $index > (tab_4_page-1)*12" ng-click="searchcityclick2(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_4_page<1">O</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in o" ng-bind="item.split('|')[1]" ng-if="$index <= tab_4_page*12 && $index > (tab_4_page-1)*12" ng-click="searchcityclick2(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_4_page<8">P</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in p" ng-bind="item.split('|')[1]" ng-if="$index <= tab_4_page*12 && $index > (tab_4_page-1)*12" ng-click="searchcityclick2(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_4_page<9">Q</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in q" ng-bind="item.split('|')[1]" ng-if="$index <= tab_4_page*12 && $index > (tab_4_page-1)*12" ng-click="searchcityclick2(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_4_page<3">R</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in r" ng-bind="item.split('|')[1]" ng-if="$index <= tab_4_page*12 && $index > (tab_4_page-1)*12" ng-click="searchcityclick2(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <!--分页-->
+                                            <div class="city_page"><a href="javascript:void(0)" ng-click="prev_tab4page()">&lt;上一页</a><i>|</i><a href="javascript:void(0)" ng-click="next_tab4page()">下一页&gt;</a></div>
+                                            <!--分页结束-->
+                                        </div>
+                                    </script>
+                                    <!--NOPQR结束-->
+                                    <!--STUWX-->
+                                    <script type="text/ng-template" id="five2.html">
+                                        <div class="train_cla">
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_5_page<17">S</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in s" ng-bind="item.split('|')[1]" ng-if="$index <= tab_5_page*12 && $index > (tab_5_page-1)*12" ng-click="searchcityclick1(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_5_page<11">T</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in t" ng-bind="item.split('|')[1]" ng-if="$index <= tab_5_page*12 && $index > (tab_5_page-1)*12" ng-click="searchcityclick2(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_5_page<1">U</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in u" ng-bind="item.split('|')[1]" ng-if="$index <= tab_5_page*12 && $index > (tab_5_page-1)*12" ng-click="searchcityclick2(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_5_page<12">W</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in w" ng-bind="item.split('|')[1]" ng-if="$index <= tab_5_page*12 && $index > (tab_5_page-1)*12" ng-click="searchcityclick2(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_5_page<17">X</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in x" ng-bind="item.split('|')[1]" ng-if="$index <= tab_5_page*12 && $index > (tab_5_page-1)*12" ng-click="searchcityclick2(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <!--分页-->
+                                            <div class="city_page"><a href="javascript:void(0)" ng-click="prev_tab5page()">&lt;上一页</a><i>|</i><a href="javascript:void(0)" ng-click="next_tab5page()">下一页&gt;</a></div>
+                                            <!--分页结束-->
+                                        </div>
+                                    </script>
+                                    <!--TUWX结束-->
+                                    <!--YZ-->
+                                    <script type="text/ng-template" id="six2.html">
+                                        <div class="train_cla">
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_6_page<19">Y</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in y" ng-bind="item.split('|')[1]" ng-if="$index <= tab_6_page*12 && $index > (tab_6_page-1)*12" ng-click="searchcityclick2(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <div class="train_cla_wra">
+                                                <i class="num" ng-if="tab_6_page<12">Z</i>
+                                                <span href="#" title="{{item.split('|')[1]}}" data="{{item.split('|')[2]}}" ng-repeat="item in z" ng-bind="item.split('|')[1]" ng-if="$index <= tab_6_page*12 && $index > (tab_6_page-1)*12" ng-click="searchcityclick2(item.split('|')[1],item.split('|')[2]);"></span>
+                                            </div>
+                                            <!--分页-->
+                                            <div class="city_page"><a href="javascript:void(0)" ng-click="prev_tab6page()">&lt;上一页</a><i>|</i><a href="javascript:void(0)" ng-click="next_tab6page()">下一页&gt;</a></div>
+                                            <!--分页结束-->
+                                        </div>
+                                    </script>
+                                    <!--YZ结束-->
+                                </div>
+                            </div>
+                            <!--城市列表结束-->
+                            <!--城市搜索-->
+                            <div class="train_city_search" ng-class="{true:'city_show',flase:''}[searchflag2]" ng-show="searchflag2">
+                                <div class="top_cities">按“<span ng-bind="cf_value2"></span>”检索</div>
+                                <div class="panel_cities">
+                                    <div class="cityline clearfix" ng-class="{true:'cur',false:''}[$index==upindex]" ng-repeat="txt in sercharr" ng-if="$index < pagenum*6 && $index >= (pagenum-1)*6" ng-mousemove="citymousemove($index)" ng-click="searchcityclick2(txt.split('|')[1],txt.split('|')[2]);">
+                                        <span class="fl" ng-bind="txt.split('|')[1]"></span>
+                                        <span class="fr" ng-bind="txt.split('|')[3]"></span>
+                                        <input type="hidden" ng-bind="txt.split('|')[2]">
+                                    </div>
+                                </div>
+                                <div id="flip_cities">
+                                    <div class="citypage">
+                                        <a href="#" class="pagetxt" ng-click="prev_serchpage('end');">&lt;&lt;上一页</a>
+                                        <a href="" class="pagetxt" ng-click="next_serchpage('end');">下一页&gt;&gt;</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--城市搜索结束-->
+                        </div>
+                        <!--到达城市结束-->
+                        <div class="train_city_time">
+                            <input type="text" id="starttime" readonly="true">
+                            <i class="icon icon-calendar"></i>
+                            <em class="week"></em>
+                        </div>
+                        <p class="train_city_ps">今天可购买07月17日及之前的车票</p>
+                        <div class="train_city_radio"><i class="icon icon-dot"></i>只搜高铁/动车 </div>
+                        <input type="button" value="开始搜索" class="train_city_but">
+                    </div>
+                </div>
+            </div>
+            <!--banner-->
+            <div id="train_banner" class="banner fr">
+                <ul class="slides">
+                    <li>
+                        <a href="#"><img src="static/img/banner.jpg" height="350" width="780"></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="static/img/banner.jpg" height="350" width="780"></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="static/img/banner.jpg" height="350" width="780"></a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="static/img/banner.jpg" height="350" width="780"></a>
+                    </li>
+                </ul>
+            </div>
+            <!--banner结束-->
+        </div>
+        <!--搜索和banner结束-->
+        <!--查票流程-->
+        <div class="train_lc">
+            <ul class="clearfix">
+                <li class="fl">
+                    <i class="icon icon-2 fl"></i>
+                    <div class="fl">
+                        <p class="p1">车次查询</p>
+                        <p class="p2">及时关注预售时间选择余票充足车次</p>
+                    </div>
+                </li>
+                <li class="fl li_arr"><i class="icon icon-arr-1"></i></li>
+                <li class="fl">
+                    <i class="icon icon-3 fl"></i>
+                    <div class="fl">
+                        <p class="p1">填写订单</p>
+                        <p class="p2">若首次互联网购票需在车站身份核验</p>
+                    </div>
+                </li>
+                <li class="fl li_arr"><i class="icon icon-arr-1"></i></li>
+                <li class="fl">
+                    <i class="icon icon-4 fl"></i>
+                    <div class="fl">
+                        <p class="p1">排队查询</p>
+                        <p class="p2">新用户需先注册后才能进入订单中心</p>
+                    </div>
+                </li>
+                <li class="fl li_arr"><i class="icon icon-arr-1"></i></li>
+                <li class="fl">
+                    <i class="icon icon-5 fl"></i>
+                    <div class="fl">
+                        <p class="p1">订单支付</p>
+                        <p class="p2">排队购票成功之后多持多种付款方式</p>
+                    </div>
+                </li>
+                <li class="fl li_arr"><i class="icon icon-arr-1"></i></li>
+                <li class="fl">
+                    <i class="icon icon-6 fl"></i>
+                    <div class="fl">
+                        <p class="p1">查看出票结果</p>
+                        <p class="p2">注意查收短信通知合理安排出行时间</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!--查票流程结束-->
+        <!--热门酒店-->
+        <div class="train_title"><i class="icon icon-7"></i>热门酒店
+            <div class="train_tab train_tab_jd"><span class="cur">北京</span><span>北京</span><span>北京</span><span>北京</span><span>北京</span><span>北京</span><span>北京</span><span>北京</span></div>
+        </div>
+        <div class="train_jd_tab">
+            <span class="arr-left icon-arr_left"></span>
+            <span class="arr-right icon-arr_right"></span>
+            <ul class="clearfix">
+                <li class="fl">
+                    <a href="#">
+                        <img src="static/img/img-1.jpg" width="284" height="190">
+                        <div class="pl10 pr10 pt10">
+                            <p class="title mb5">上海浦东香格里拉大酒店</p>
+                            <div class="clearfix">
+                                <p class="fl addr"><i class="icon icon-addr mr5"></i>陆家嘴金融贸易区</p>
+                                <p class="fr price"><span>￥</span><em>299</em>起</p>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="fl">
+                    <a href="#">
+                        <img src="static/img/img-1.jpg" width="284" height="190">
+                        <div class="pl10 pr10 pt10">
+                            <p class="title mb5">上海浦东香格里拉大酒店</p>
+                            <div class="clearfix">
+                                <p class="fl addr"><i class="icon icon-addr mr5"></i>陆家嘴金融贸易区</p>
+                                <p class="fr price"><span>￥</span><em>299</em>起</p>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="fl">
+                    <a href="#">
+                        <img src="static/img/img-1.jpg" width="284" height="190">
+                        <div class="pl10 pr10 pt10">
+                            <p class="title mb5">上海浦东香格里拉大酒店</p>
+                            <div class="clearfix">
+                                <p class="fl addr"><i class="icon icon-addr mr5"></i>陆家嘴金融贸易区</p>
+                                <p class="fr price"><span>￥</span><em>299</em>起</p>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="fl">
+                    <a href="#">
+                        <img src="static/img/img-1.jpg" width="284" height="190">
+                        <div class="pl10 pr10 pt10">
+                            <p class="title mb5">上海浦东香格里拉大酒店</p>
+                            <div class="clearfix">
+                                <p class="fl addr"><i class="icon icon-addr mr5"></i>陆家嘴金融贸易区</p>
+                                <p class="fr price"><span>￥</span><em>299</em>起</p>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="fl">
+                    <a href="#">
+                        <img src="static/img/img-1.jpg" width="284" height="190">
+                        <div class="pl10 pr10 pt10">
+                            <p class="title mb5">上海浦东香格里拉大酒店</p>
+                            <div class="clearfix">
+                                <p class="fl addr"><i class="icon icon-addr mr5"></i>陆家嘴金融贸易区</p>
+                                <p class="fr price"><span>￥</span><em>299</em>起</p>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="fl">
+                    <a href="#">
+                        <img src="static/img/img-1.jpg" width="284" height="190">
+                        <div class="pl10 pr10 pt10">
+                            <p class="title mb5">上海浦东香格里拉大酒店</p>
+                            <div class="clearfix">
+                                <p class="fl addr"><i class="icon icon-addr mr5"></i>陆家嘴金融贸易区</p>
+                                <p class="fr price"><span>￥</span><em>299</em>起</p>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!--热门酒店结束-->
+        <!--热门线路-->
+        <div class="train_title"><i class="icon icon-8"></i>热门线路
+            <div class="train_tab train_tab_jd train_tab_lx"><span class="cur">上海</span><span>北京</span><span>杭州</span><span>广州</span><span>南京</span><span>武汉</span><span>西安</span></div>
+        </div>
+        <div class="train_route_box">
+            <!--train_route-->
+            <div class="train_route clearfix">
+                <ul class="fl">
+                    <li><a href="#" class="clearfix"><u data='SHH'>上海</u><i class="icon icon-10"></i><u data='BJP'>北京</u><span class="fr"><em>￥</em><i>177.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='SHH'>上海</u><i class="icon icon-10"></i><u data='HZH'>杭州</u><span class="fr"><em>￥</em><i>24.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='SHH'>上海</u><i class="icon icon-10"></i><u data='GZQ'>广州</u><span class="fr"><em>￥</em><i>189.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='SHH'>上海</u><i class="icon icon-10"></i><u data='NJH'>南京</u><span class="fr"><em>￥</em><i>46.5</i>起</span></a></li>
+                </ul>
+                <ul class="fl">
+                    <li><a href="#" class="clearfix"><u data='SHH'>上海</u><i class="icon icon-10"></i><u data='TJP'>天津</u><span class="fr"><em>￥</em><i>143.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='SHH'>上海</u><i class="icon icon-10"></i><u data='WHN'>武汉</u><span class="fr"><em>￥</em><i>148.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='SHH'>上海</u><i class="icon icon-10"></i><u data='XAY'>西安</u><span class="fr"><em>￥</em><i>180.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='SHH'>上海</u><i class="icon icon-10"></i><u data='SZH'>苏州</u><span class="fr"><em>￥</em><i>12.5</i>起</span></a></li>
+                </ul>
+                <ul class="fl">
+                    <li><a href="#" class="clearfix"><u data='SHH'>上海</u><i class="icon icon-10"></i><u data='WXH'>无锡</u><span class="fr"><em>￥</em><i>19.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='SHH'>上海</u><i class="icon icon-10"></i><u data='CZH'>常州</u><span class="fr"><em>￥</em><i>24.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='SHH'>上海</u><i class="icon icon-10"></i><u data='NGH'>宁波</u><span class="fr"><em>￥</em><i>50.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='SHH'>上海</u><i class="icon icon-10"></i><u data='JNK'>济南</u><span class="fr"><em>￥</em><i>109</i>起</span></a></li>
+                </ul>
+                <ul class="fl">
+                    <li><a href="#" class="clearfix"><u data='SHH'>上海</u><i class="icon icon-10"></i><u data='QDK'>青岛</u><span class="fr"><em>￥</em><i>518</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='SHH'>上海</u><i class="icon icon-10"></i><u data='HFH'>合肥</u><span class="fr"><em>￥</em><i>79.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='SHH'>上海</u><i class="icon icon-10"></i><u data='ZZF'>郑州</u><span class="fr"><em>￥</em><i>128.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='SHH'>上海</u><i class="icon icon-10"></i><u data='RZH'>温州</u><span class="fr"><em>￥</em><i>175.5</i>起</span></a></li>
+                </ul>
+            </div>
+            <!--train_route结束-->
+            <!--train_route-->
+            <div class="train_route clearfix">
+                <ul class="fl">
+                    <li><a href="#" class="clearfix"><u data='BJP'>北京</u><i class="icon icon-10"></i><u data='SHH'>上海</u><span class="fr"><em>￥</em><i>156.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='BJP'>北京</u><i class="icon icon-10"></i><u data='XAY'>西安</u><span class="fr"><em>￥</em><i>156.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='BJP'>北京</u><i class="icon icon-10"></i><u data='NJH'>南京</u><span class="fr"><em>￥</em><i>130.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='BJP'>北京</u><i class="icon icon-10"></i><u data='GZQ'>广州</u><span class="fr"><em>￥</em><i>251</i>起</span></a></li>
+                </ul>
+                <ul class="fl">
+                    <li><a href="#" class="clearfix"><u data='BJP'>北京</u><i class="icon icon-10"></i><u data='HZH'>杭州</u><span class="fr"><em>￥</em><i>189.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='BJP'>北京</u><i class="icon icon-10"></i><u data='QDK'>青岛</u><span class="fr"><em>￥</em><i>314</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='BJP'>北京</u><i class="icon icon-10"></i><u data='ZZF'>郑州</u><span class="fr"><em>￥</em><i>93</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='BJP'>北京</u><i class="icon icon-10"></i><u data='JNK'>济南</u><span class="fr"><em>￥</em><i>72</i>起</span></a></li>
+                </ul>
+                <ul class="fl">
+                    <li><a href="#" class="clearfix"><u data='BJP'>北京</u><i class="icon icon-10"></i><u data='TYV'>太原</u><span class="fr"><em>￥</em><i>72</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='BJP'>北京</u><i class="icon icon-10"></i><u data='TJP'>天津</u><span class="fr"><em>￥</em><i>17.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='BJP'>北京</u><i class="icon icon-10"></i><u data='WHN'>武汉</u><span class="fr"><em>￥</em><i>152.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='BJP'>北京</u><i class="icon icon-10"></i><u data='SJP'>石家庄</u><span class="fr"><em>￥</em><i>43.5</i>起</span></a></li>
+                </ul>
+                <ul class="fl">
+                    <li><a href="#" class="clearfix"><u data='BJP'>北京</u><i class="icon icon-10"></i><u data='HBB'>哈尔滨</u><span class="fr"><em>￥</em><i>152.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='BJP'>北京</u><i class="icon icon-10"></i><u data='JLL'>吉林</u><span class="fr"><em>￥</em><i>156.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='BJP'>北京</u><i class="icon icon-10"></i><u data='DLT'>大连</u><span class="fr"><em>￥</em><i>255</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='BJP'>北京</u><i class="icon icon-10"></i><u data='SZH'>苏州</u><span class="fr"><em>￥</em><i>148.5</i>起</span></a></li>
+                </ul>
+            </div>
+            <!--train_route结束-->
+            <!--train_route-->
+            <div class="train_route clearfix">
+                <ul class="fl">
+                    <li><a href="#" class="clearfix"><u data='HZH'>杭州</u><i class="icon icon-10"></i><u data='SHH'>上海</u><span class="fr"><em>￥</em><i>24.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='HZH'>杭州</u><i class="icon icon-10"></i><u data='BJP'>北京</u><span class="fr"><em>￥</em><i>189.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='HZH'>杭州</u><i class="icon icon-10"></i><u data='NJH'>南京</u><span class="fr"><em>￥</em><i>54.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='HZH'>杭州</u><i class="icon icon-10"></i><u data='XMS'>厦门</u><span class="fr"><em>￥</em><i>281.5</i>起</span></a></li>
+                </ul>
+                <ul class="fl">
+                    <li><a href="#" class="clearfix"><u data='HZH'>杭州</u><i class="icon icon-10"></i><u data='JNK'>济南</u><span class="fr"><em>￥</em><i>138.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='HZH'>杭州</u><i class="icon icon-10"></i><u data='TJP'>天津</u><span class="fr"><em>￥</em><i>173.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='HZH'>杭州</u><i class="icon icon-10"></i><u data='SZH'>苏州</u><span class="fr"><em>￥</em><i>40.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='HZH'>杭州</u><i class="icon icon-10"></i><u data='NGH'>宁波</u><span class="fr"><em>￥</em><i>24.5</i>起</span></a></li>
+                </ul>
+                <ul class="fl">
+                    <li><a href="#" class="clearfix"><u data='HZH'>杭州</u><i class="icon icon-10"></i><u data='GZQ'>广州</u><span class="fr"><em>￥</em><i>173.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='HZH'>杭州</u><i class="icon icon-10"></i><u data='XAY'>西安</u><span class="fr"><em>￥</em><i>166.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='HZH'>杭州</u><i class="icon icon-10"></i><u data='ZJH'>镇江</u><span class="fr"><em>￥</em><i>62.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='HZH'>杭州</u><i class="icon icon-10"></i><u data='WHN'>武汉</u><span class="fr"><em>￥</em><i>128.5</i>起</span></a></li>
+                </ul>
+                <ul class="fl">
+                    <li><a href="#" class="clearfix"><u data='HZH'>杭州</u><i class="icon icon-10"></i><u data='WXH'>无锡</u><span class="fr"><em>￥</em><i>43.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='HZH'>杭州</u><i class="icon icon-10"></i><u data='CZH'>常州</u><span class="fr"><em>￥</em><i>50.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='HZH'>杭州</u><i class="icon icon-10"></i><u data='RZH'>温州</u><span class="fr"><em>￥</em><i>64.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='HZH'>杭州</u><i class="icon icon-10"></i><u data='NCG'>南昌</u><span class="fr"><em>￥</em><i>91</i>起</span></a></li>
+                </ul>
+            </div>
+            <!--train_route结束-->
+            <!--train_route-->
+            <div class="train_route clearfix">
+                <ul class="fl">
+                    <li><a href="#" class="clearfix"><u data='GZQ'>广州</u><i class="icon icon-10"></i><u data='SHH'>上海</u><span class="fr"><em>￥</em><i>189.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='GZQ'>广州</u><i class="icon icon-10"></i><u data='BJP'>北京</u><span class="fr"><em>￥</em><i>251</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='GZQ'>广州</u><i class="icon icon-10"></i><u data='ZZF'>郑州</u><span class="fr"><em>￥</em><i>192</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='GZQ'>广州</u><i class="icon icon-10"></i><u data='CQW'>重庆</u><span class="fr"><em>￥</em><i>198</i>起</span></a></li>
+                </ul>
+                <ul class="fl">
+                    <li><a href="#" class="clearfix"><u data='GZQ'>广州</u><i class="icon icon-10"></i><u data='KMM'>昆明</u><span class="fr"><em>￥</em><i>192</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='GZQ'>广州</u><i class="icon icon-10"></i><u data='YYQ'>岳阳</u><span class="fr"><em>￥</em><i>104</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='GZQ'>广州</u><i class="icon icon-10"></i><u data='XAY'>西安</u><span class="fr"><em>￥</em><i>217</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='GZQ'>广州</u><i class="icon icon-10"></i><u data='CDW'>成都</u><span class="fr"><em>￥</em><i>224</i>起</span></a></li>
+                </ul>
+                <ul class="fl">
+                    <li><a href="#" class="clearfix"><u data='GZQ'>广州</u><i class="icon icon-10"></i><u data='XMS'>厦门</u><span class="fr"><em>￥</em><i>102</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='GZQ'>广州</u><i class="icon icon-10"></i><u data='HYQ'>衡阳</u><span class="fr"><em>￥</em><i>69</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='GZQ'>广州</u><i class="icon icon-10"></i><u data='ZHQ'>珠海</u><span class="fr"><em>￥</em><i>70</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='GZQ'>广州</u><i class="icon icon-10"></i><u data='SZQ'>深圳</u><span class="fr"><em>￥</em><i>21.5</i>起</span></a></li>
+                </ul>
+                <ul class="fl">
+                    <li><a href="#" class="clearfix"><u data='GZQ'>广州</u><i class="icon icon-10"></i><u data='ZSQ'>中山</u><span class="fr"><em>￥</em><i>25</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='GZQ'>广州</u><i class="icon icon-10"></i><u data='WHN'>武汉</u><span class="fr"><em>￥</em><i>127.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='GZQ'>广州</u><i class="icon icon-10"></i><u data='ZZQ'>株洲</u><span class="fr"><em>￥</em><i>84</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='GZQ'>广州</u><i class="icon icon-10"></i><u data='CSQ'>长沙</u><span class="fr"><em>￥</em><i>91</i>起</span></a></li>
+                </ul>
+            </div>
+            <!--train_route结束-->
+            <!--train_route-->
+            <div class="train_route clearfix">
+                <ul class="fl">
+                    <li><a href="#" class="clearfix"><u data='NJH'>南京</u><i class="icon icon-10"></i><u data='SHH'>上海</u><span class="fr"><em>￥</em><i>40.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='NJH'>南京</u><i class="icon icon-10"></i><u data='BJP'>北京</u><span class="fr"><em>￥</em><i>130.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='NJH'>南京</u><i class="icon icon-10"></i><u data='HZH'>杭州</u><span class="fr"><em>￥</em><i>54.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='NJH'>南京</u><i class="icon icon-10"></i><u data='SZH'>苏州</u><span class="fr"><em>￥</em><i>29.5</i>起</span></a></li>
+                </ul>
+                <ul class="fl">
+                    <li><a href="#" class="clearfix"><u data='NJH'>南京</u><i class="icon icon-10"></i><u data='KSH'>昆山</u><span class="fr"><em>￥</em><i>35.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='NJH'>南京</u><i class="icon icon-10"></i><u data='XAY'>西安</u><span class="fr"><em>￥</em><i>152.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='NJH'>南京</u><i class="icon icon-10"></i><u data='NGH'>宁波</u><span class="fr"><em>￥</em><i>91</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='NJH'>南京</u><i class="icon icon-10"></i><u data='WXH'>无锡</u><span class="fr"><em>￥</em><i>25.5</i>起</span></a></li>
+                </ul>
+                <ul class="fl">
+                    <li><a href="#" class="clearfix"><u data='NJH'>南京</u><i class="icon icon-10"></i><u data='CZH'>常州</u><span class="fr"><em>￥</em><i>18.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='NJH'>南京</u><i class="icon icon-10"></i><u data='ZZF'>郑州</u><span class="fr"><em>￥</em><i>82</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='NJH'>南京</u><i class="icon icon-10"></i><u data='XMS'>厦门</u><span class="fr"><em>￥</em><i>360.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='NJH'>南京</u><i class="icon icon-10"></i><u data='XCH'>徐州</u><span class="fr"><em>￥</em><i>45.5</i>起</span></a></li>
+                </ul>
+                <ul class="fl">
+                    <li><a href="#" class="clearfix"><u data='NJH'>南京</u><i class="icon icon-10"></i><u data='TJP'>天津</u><span class="fr"><em>￥</em><i>113.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='NJH'>南京</u><i class="icon icon-10"></i><u data='JNK'>济南</u><span class="fr"><em>￥</em><i>80</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='NJH'>南京</u><i class="icon icon-10"></i><u data='QDK'>青岛</u><span class="fr"><em>￥</em><i>398.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='NJH'>南京</u><i class="icon icon-10"></i><u data='HFH'>合肥</u><span class="fr"><em>￥</em><i>38.5</i>起</span></a></li>
+                </ul>
+            </div>
+            <!--train_route结束-->
+            <!--train_route-->
+            <div class="train_route clearfix">
+                <ul class="fl">
+                    <li><a href="#" class="clearfix"><u data='WHN'>武汉</u><i class="icon icon-10"></i><u data='SHH'>上海</u><span class="fr"><em>￥</em><i>122</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='WHN'>武汉</u><i class="icon icon-10"></i><u data='BJP'>北京</u><span class="fr"><em>￥</em><i>152.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='WHN'>武汉</u><i class="icon icon-10"></i><u data='GZQ'>广州</u><span class="fr"><em>￥</em><i>127.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='WHN'>武汉</u><i class="icon icon-10"></i><u data='CSQ'>长沙</u><span class="fr"><em>￥</em><i>49.5</i>起</span></a></li>
+                </ul>
+                <ul class="fl">
+                    <li><a href="#" class="clearfix"><u data='WHN'>武汉</u><i class="icon icon-10"></i><u data='SZQ'>深圳</u><span class="fr"><em>￥</em><i>142.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='WHN'>武汉</u><i class="icon icon-10"></i><u data='XAY'>西安</u><span class="fr"><em>￥</em><i>115</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='WHN'>武汉</u><i class="icon icon-10"></i><u data='TYV'>太原</u><span class="fr"><em>￥</em><i>152.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='WHN'>武汉</u><i class="icon icon-10"></i><u data='JNK'>济南</u><span class="fr"><em>￥</em><i>119</i>起</span></a></li>
+                </ul>
+                <ul class="fl">
+                    <li><a href="#" class="clearfix"><u data='WHN'>武汉</u><i class="icon icon-10"></i><u data='HZH'>杭州</u><span class="fr"><em>￥</em><i>128.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='WHN'>武汉</u><i class="icon icon-10"></i><u data='LYF'>洛阳</u><span class="fr"><em>￥</em><i>80</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='WHN'>武汉</u><i class="icon icon-10"></i><u data='SJP'>石家庄</u><span class="fr"><em>￥</em><i>119</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='WHN'>武汉</u><i class="icon icon-10"></i><u data='NJH'>南京</u><span class="fr"><em>￥</em><i>83</i>起</span></a></li>
+                </ul>
+                <ul class="fl">
+                    <li><a href="#" class="clearfix"><u data='WHN'>武汉</u><i class="icon icon-10"></i><u data='YCN'>宜昌</u><span class="fr"><em>￥</em><i>43.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='WHN'>武汉</u><i class="icon icon-10"></i><u data='NCG'>南昌</u><span class="fr"><em>￥</em><i>47.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='WHN'>武汉</u><i class="icon icon-10"></i><u data='JBN'>荆州</u><span class="fr"><em>￥</em><i>37.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='WHN'>武汉</u><i class="icon icon-10"></i><u data='SZH'>苏州</u><span class="fr"><em>￥</em><i>115</i>起</span></a></li>
+                </ul>
+            </div>
+            <!--train_route结束-->
+            <!--train_route-->
+            <div class="train_route clearfix">
+                <ul class="fl">
+                    <li><a href="#" class="clearfix"><u data='XAY'>西安</u><i class="icon icon-10"></i><u data='BJP'>北京</u><span class="fr"><em>￥</em><i>148.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='XAY'>西安</u><i class="icon icon-10"></i><u data='LYF'>洛阳</u><span class="fr"><em>￥</em><i>48.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='XAY'>西安</u><i class="icon icon-10"></i><u data='ZZF'>郑州</u><span class="fr"><em>￥</em><i>63</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='XAY'>西安</u><i class="icon icon-10"></i><u data='WHN'>武汉</u><span class="fr"><em>￥</em><i>115</i>起</span></a></li>
+                </ul>
+                <ul class="fl">
+                    <li><a href="#" class="clearfix"><u data='XAY'>西安</u><i class="icon icon-10"></i><u data='SHH'>上海</u><span class="fr"><em>￥</em><i>180.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='XAY'>西安</u><i class="icon icon-10"></i><u data='YWY'>延安</u><span class="fr"><em>￥</em><i>21.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='XAY'>西安</u><i class="icon icon-10"></i><u data='NJH'>南京</u><span class="fr"><em>￥</em><i>152.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='XAY'>西安</u><i class="icon icon-10"></i><u data='SZH'>苏州</u><span class="fr"><em>￥</em><i>173.5</i>起</span></a></li>
+                </ul>
+                <ul class="fl">
+                    <li><a href="#" class="clearfix"><u data='XAY'>西安</u><i class="icon icon-10"></i><u data='CZH'>常州</u><span class="fr"><em>￥</em><i>163.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='XAY'>西安</u><i class="icon icon-10"></i><u data='WXH'>无锡</u><span class="fr"><em>￥</em><i>168.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='XAY'>西安</u><i class="icon icon-10"></i><u data='CDW'>成都</u><span class="fr"><em>￥</em><i>98</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='XAY'>西安</u><i class="icon icon-10"></i><u data='LZJ'>兰州</u><span class="fr"><em>￥</em><i>82</i>起</span></a></li>
+                </ul>
+                <ul class="fl">
+                    <li><a href="#" class="clearfix"><u data='XAY'>西安</u><i class="icon icon-10"></i><u data='CSQ'>长沙</u><span class="fr"><em>￥</em><i>152.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='XAY'>西安</u><i class="icon icon-10"></i><u data='SJP'>石家庄</u><span class="fr"><em>￥</em><i>119</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='XAY'>西安</u><i class="icon icon-10"></i><u data='SMF'>三门峡</u><span class="fr"><em>￥</em><i>35.5</i>起</span></a></li>
+                    <li><a href="#" class="clearfix"><u data='XAY'>西安</u><i class="icon icon-10"></i><u data='YYQ'>岳阳</u><span class="fr"><em>￥</em><i>138.5</i>起</span></a></li>
+                </ul>
+            </div>
+            <!--train_route结束-->
+        </div>
+        <!--热门线路结束-->
+        <!--常见问题-->
+        <div class="train_title"><i class="icon icon-9"></i>常见问题</div>
+        <ul class="train_problem clearfix">
+            <li class="fl">
+                <p class="p1">身份验证</p>
+                <p class="p2">2014年新规：从未在网络购票的用户，请先携身份证去火车站专门窗口核验身份证信息，核验通过后才能网上购票。</p>
+            </li>
+            <li class="fl">
+                <p class="p1">如何取票？</p>
+                <p class="p2">若您使用二代居民身份证进行的预订，可凭预订时所使用的乘车人有效身份证件原件到车站售票窗口、铁路客票代售点或车站自...<a href="#" class="more">更多&gt;&gt;</a></p>
+            </li>
+            <li class="fl">
+                <p class="p1">如何办理退票？</p>
+                <p class="p2">未取票、且发车前时间大于40分钟，可在游大大个人中心点击“我的订单”自助申请退票。已取票，请在发车前，需您自行...<a href="#" class="more">更多&gt;&gt;</a></p>
+            </li>
+            <li class="fl">
+                <p class="p1">火车票可以改签车票吗？</p>
+                <p class="p2">网上办理改签需在未取票并大于发车前40分钟办理。开车前48小时以上，可以改签车次、日期。开车前48小时以内...<a href="#" class="more">更多&gt;&gt;</a></p>
+            </li>
+        </ul>
+        <!--常见问题结束-->
+    </div>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+    <script type="text/javascript" src="static/js/angular.min.js"></script>
+    <script type="text/javascript" src="static/js/jquery.flexslider-min.js"></script>
+    <script type="text/javascript" src="static/js/calendar.js"></script>
+    <script type="text/javascript" src="static/js/station_name.js"></script>
+    <script type="text/javascript" src="static/js/city.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            // 轮播图
+            $("#train_banner").flexslider({
+                directionNav: false,
+                pauseOnAction: true,
+                animation: "slide",
+                direction: "horizontal",
+                slideshowSpeed: 4000
+            });
+            //选择开始日期
+            var starttime = new CalendarPc("starttime", {
+                direction: "after",
+                offsety: 6,
+                display_num: 2,
+            });
+            starttime.callback = function(data) {
+                var num = new Date(data).getDay();
+                var week;
+                if (num == 1) {
+                    week = '星期一';
+                } else if (num == 2) {
+                    week = '星期二';
+                } else if (num == 3) {
+                    week = '星期三';
+                } else if (num == 4) {
+                    week = '星期四';
+                } else if (num == 5) {
+                    week = '星期五';
+                } else if (num == 6) {
+                    week = '星期六';
+                } else if (num == 0) {
+                    week = '星期日';
+                }
+                //console.log(num);
+                $('.train_city_time .week').text(week);
+            }
+            starttime.init();
+            //酒店切换
+            function jd_slider() {
+                var num = 0;
+                var scroll_state = true;
+                var li_length = $(".train_jd_tab li").size();
+                var ul_width = li_length * 304;
+                $(".train_jd_tab ul").width(ul_width);
+                $(".train_jd_tab .arr-right").click(function() {
+                    if (num < li_length - 4 && scroll_state == true) {
+                        num++;
+                        $(".train_jd_tab ul").animate({
+                            left: "-" + 304 * num + "px"
+                        }, 600, function() {
+                            scroll_state = true;
+                        });
+                        scroll_state = false;
+                    }
+                });
+                $(".train_jd_tab .arr-left").click(function() {
+                    if (num > 0 && scroll_state == true) {
+                        num--;
+                        $(".train_jd_tab ul").animate({
+                            left: "-" + 304 * num + "px"
+                        }, 600, function() {
+                            scroll_state = true;
+                        });
+                        scroll_state = false;
+                    }
+                });
+            }
+            jd_slider();
+            //热门路线切换
+            $('.train_route').each(function(){
+                $(this).find("ul:last").css({
+                    'marginRight': 0,
+                    'borderRight': 0
+                });
+            })
+            $('.train_tab_lx span').click(function(){
+                var index = $(this).index();
+                $('.train_route').eq(index).show().siblings().hide();
+            })
+
+            $('.train_route:gt(0)').hide();
+            $('.train_problem li:last').css('marginRight', 0);
+            $('.train_tab span').click(function() {
+                $(this).addClass('cur').siblings().removeClass('cur');
+            })
+            $('.train_city_radio i').click(function() {
+                $(this).toggleClass('icon-dot_cur');
+            })
+            $('.train_sea_city .change').hover(function() {
+                $(this).toggleClass('icon-huan_cur');
+            })
+            $('.train_jd_tab .arr-left').hover(function() {
+                $(this).toggleClass('icon-arr_left_cur');
+            })
+            $('.train_jd_tab .arr-right').hover(function() {
+                $(this).toggleClass('icon-arr_right_cur');
+            })
+            $('.train_city_list .icon-close').hover(function() {
+                $(this).toggleClass('icon-close_cur');
+            })
+            //热门路线a链接
+            $('.train_route_box .train_route ul li a').click(function(){
+                var $this = $(this);
+                var text1 = $this.find("u").eq(0).text();
+                var text2 = $this.find("u").eq(1).text();
+                var city_t1=[],city_t2=[];
+                var city_cf = station_names.split('@');
+                for(var i=1; i<city_cf.length;i++){
+                    if(city_cf[i].split('|')[1].indexOf(text1)>=0){
+                        city_t1.push(city_cf[i].split('|')[1]);
+                    }
+                    if(city_cf[i].split('|')[1].indexOf(text2)>=0){
+                        city_t2.push(city_cf[i].split('|')[1]);
+                    }
+                }
+                //city_t1 = city_t1.replace('"','');
+                var d = new Date();
+                var vYear = d.getFullYear();
+                var vMon = d.getMonth() + 1;
+                var vDay = d.getDate();
+                var s=vYear+'-'+(vMon<10 ? "0" + vMon : vMon)+'-'+(vDay<10 ? "0"+ vDay : vDay);
+                var cityStartCode = $this.find("u").eq(0).attr('data');
+                var cityEndCode = $this.find("u").eq(1).attr('data');
+                var startTime = s;
+                var cityStart = text1;
+                var cityEnd = text2;
+                var cityStartList = city_t1;
+                var cityEndList = city_t2;
+                var gdOnlyStatus = true;
+                //console.log(cityStartList);
+               // console.log(cityEndList);
+                window.location.href="http://www.uddtrip.com/udd-trainticket-webst?from=" + cityStartCode+"&to=" +
+                                      cityEndCode + "&day=" +startTime + "&fromCn=" +cityStart + "&toCn=" +cityEnd
+                                      + "&fromCityList=" + cityStartList + "&toCityList=" + cityEndList + "&gdOnlyStatus=" + gdOnlyStatus;
+            })
+        })
+    </script>
+</body>
+
+</html>

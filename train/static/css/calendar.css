@@ -1,0 +1,23 @@
+.ui_calendar.style_1{display:none;position: absolute;left: 0;top:0;z-index: 100;background: #fff;box-shadow: -2px -2px 2px rgba(238,238,238,0.5);padding: 20px 30px;}
+.ui_calendar.style_1 .title{text-align: center;height: 30px; line-height: 30px;}
+.ui_calendar.style_1 .title{font-size: 16px;color:#fff;font-weight: bold;background:#009fe8;}
+.ui_calendar.style_1 .calendar{width:220px;float: left;margin-right: 10px;}
+.ui_calendar.style_1 .calendar:last{margin-right: 0;}
+.ui_calendar.style_1 .calendar table{width: 100%;}
+.ui_calendar.style_1 .calendar table th{height: 32px;background:#eeeeee;color:#0b0306;}
+.ui_calendar.style_1 .calendar table td{text-align:center;height: 30px;border:1px solid #eaeaea;}
+.ui_calendar.style_1 .calendar table td a{display: block;height: 30px;color:#000;line-height: 30px;}
+.ui_calendar.style_1 .calendar table td a.disable{color: #c5c5c5;cursor:context-menu;}
+.ui_calendar.style_1 .calendar table td a.disable:hover{background: #fff;}
+.ui_calendar.style_1 .calendar table td a:hover{background:#daf3fe;}
+.ui_calendar.style_1 .calendar table td a.selected{background: #ff9913;color:#fff;}
+.ui_calendar.style_1 .prev_btn{position: absolute;left: 32px;top:22px;width:26px;height:26px;line-height: 26px;text-align: center;background:#37bbf8;color:#0591d1;font-weight: bold;font-size: 24px;font-family: simsun;}
+.ui_calendar.style_1 .next_btn{position: absolute;right: 32px;top:22px;width:26px;height:26px;line-height: 26px;text-align: center;background:#37bbf8;color:#0591d1;font-weight: bold;font-size: 24px;font-family: simsun;}
+.ui_calendar.style_1 .prev_btn:hover,.ui_calendar.style_1 .next_btn:hover{background: #37bbf8;color: #fff;}
+
+
+
+
+
+
+

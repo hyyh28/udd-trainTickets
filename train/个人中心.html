@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+	<title>火车票</title>
+	<link href="http://www.uddtrip.com/css/base.css" type="text/css" rel="stylesheet">
+	<link rel="stylesheet" href="static/css/train.css">
+	<link rel="stylesheet" href="static/css/calendar.css">
+	<link rel="stylesheet" href="static/css/sprite/sprite.css" >
+	<link rel="shortcut icon" type="image/x-icon" href="http://www.uddtrip.com/img/favicon.ico" media="screen" />
+</head>
+<body>
+	<div class="train_per">
+		<!--有订单-->
+		<div class="train_screen clearfix">
+			<div class="fl train_d"><span class="na">旅客</span><input type="text" placeholder="中文名/英文名"></div>
+			<div class="fl train_d"><span class="na">乘车时间</span><input type="text" placeholder="YYY-MM-DD" id="starttime" readonly="readonly"><span class="bor">—</span><input type="text" placeholder="YYY-MM-DD" id="endtime" readonly="readonly"></div>
+			<div class="fl train_d"><span class="na">订单状态</span><select><option>全部</option><option>全部</option><option>全部</option><option>全部</option></select></div>
+			<span class="train_sear fl"><i class="icon icon-search_per"></i>查询</span>
+		</div>
+		<table cellpadding="0" cellspacing="0" class="train_order">
+			<tr>
+				<th class="td1">订单信息</th>
+				<th class="td2">车次/车程</th>
+				<th class="td3">旅客</th>
+				<th class="td4">行程日期</th>
+				<th class="td5">订单金额</th>
+				<th class="td6">订单状态</th>
+				<th class="td7">操作</th>
+			</tr>
+			<tr>
+				<td class="td1"><div>订单编号：Y15051988</div><div>预定时间：2015-05-19</div></td>
+				<td class="td2"><div>G8</div><div>上海虹桥 — 北京</div></td>
+				<td class="td3">代用名</td>
+				<td class="td4"><div>2015-05-19  10：30</div><div>2015-05-19  10：30</div></td>
+				<td class="td5">￥9998</td>
+				<td class="td6"><span>购票成功</span></td>
+				<td class="td7"><span class="sea">查看</span><span class="cancel">取消</span><span class="pay">去支付</span><span class="change">改签</span><span class="retreat">退票</span></td>
+			</tr>
+			<tr>
+				<td class="td1"><div>订单编号：Y15051988</div><div>预定时间：2015-05-19</div></td>
+				<td class="td2"><div>G8</div><div>上海虹桥 — 北京</div></td>
+				<td class="td3">代用名</td>
+				<td class="td4"><div>2015-05-19  10：30</div><div>2015-05-19  10：30</div></td>
+				<td class="td5">￥9998</td>
+				<td class="td6"><span class="s4">出票中</span></td>
+				<td class="td7"><span class="sea">查看</span><span class="cancel">取消</span><span class="pay">去支付</span><span class="change">改签</span><span class="retreat">退票</span></td>
+			</tr>
+			<tr>
+				<td class="td1"><div>订单编号：Y15051988</div><div>预定时间：2015-05-19</div></td>
+				<td class="td2"><div>G8</div><div>上海虹桥 — 北京</div></td>
+				<td class="td3">代用名</td>
+				<td class="td4"><div>2015-05-19  10：30</div><div>2015-05-19  10：30</div></td>
+				<td class="td5">￥9998</td>
+				<td class="td6"><span class="s3">已取消</span></td>
+				<td class="td7"><span class="sea">查看</span><span class="cancel">取消</span><span class="pay">去支付</span><span class="change">改签</span><span class="retreat">退票</span></td>
+			</tr>
+			<tr>
+				<td class="td1"><div>订单编号：Y15051988</div><div>预定时间：2015-05-19</div></td>
+				<td class="td2"><div>G8</div><div>上海虹桥 — 北京</div></td>
+				<td class="td3">代用名</td>
+				<td class="td4"><div>2015-05-19  10：30</div><div>2015-05-19  10：30</div></td>
+				<td class="td5">￥9998</td>
+				<td class="td6"><span class="s2">待支付</span></td>
+				<td class="td7"><span class="sea">查看</span><span class="cancel">取消</span><span class="pay">去支付</span><span class="change">改签</span><span class="retreat">退票</span></td>
+			</tr>
+			<tr>
+				<td class="td1"><div>订单编号：Y15051988</div><div>预定时间：2015-05-19</div></td>
+				<td class="td2"><div>G8</div><div>上海虹桥 — 北京</div></td>
+				<td class="td3">代用名</td>
+				<td class="td4"><div>2015-05-19  10：30</div><div>2015-05-19  10：30</div></td>
+				<td class="td5">￥9998</td>
+				<td class="td6"><span class="s1">已退订</span></td>
+				<td class="td7"><span class="sea">查看</span><span class="cancel">取消</span><span class="pay">去支付</span><span class="change">改签</span><span class="retreat">退票</span></td>
+			</tr>
+		</table>
+		<!--有订单结束-->
+		<!--没有订单-->
+		<div class="train_sc_no">
+			<div class="train_sc_con">
+				<div class="tab"><span>已出票<em>0</em></span><span>待付款订单<em>0</em></span><span>已取消订单<em>0</em></span></div>
+				<div class="train_sc_prompt">暂时没有相关订单</div>
+			</div>
+			<div class="active"><a href="#"><img src="static/img/active.jpg" alt="" width="100%" height="125"></a></div>
+		</div>
+		<!--没有订单结束-->
+		<!--查看订单弹出框-->
+		<div class="sc_mask"></div>
+		<div class="train_sc_tan">
+			<div class="train_tan_wra">
+				<i class="icon icon-close_per"></i>
+				<div class="train_tan_t clearfix">
+					<span class="fl">订单日期 ：<b>2016-10-12</b></span>
+					<div class="fl addr"><b>上海虹桥</b><i class="icon icon-ico1"></i><b>福州南</b></div>
+					<span class="fr">乘车日期：<b>2016-10-12 11:24</b></span>
+				</div>
+				<table cellpadding="0" cellspacing="0" class="train_table">
+					<tr>
+						<th class="td1">序号</th>
+						<th class="td2">车次信息</th>
+						<th class="td3">席位信息</th>
+						<th class="td4">旅客信息</th>
+						<th class="td5">取票方式</th>
+						<th class="td6">保险信息</th>
+						<th class="td7">票款金额</th>
+						<th class="td8">车票状态</th>
+					</tr>
+					<tr>
+						<td class="td1">1</td>
+						<td class="td2"><span>2016-10-12 11:24开</span><span>D2283上海虹桥-福州南</span></td>
+						<td class="td3"><span>02车厢</span><span>无座</span><span>二等座</span></td>
+						<td class="td4"><span>代用名</span><span>二代身份证</span><span>341115199222066221</span></td>
+						<td class="td5"><span>邮寄</span><span>上海市宝山区2038号UDD旅游科技</span></td>
+						<td class="td6"><span>20元的火车意外伤害保险</span></td>
+						<td class="td7"><span>成人票<em>264.0元</em></span></td>
+						<td class="td8" rowspan="2">待支付</td>
+					</tr>
+					<tr>
+						<td class="td1">1</td>
+						<td class="td2"><span>2016-10-12 11:24开</span><span>D2283上海虹桥-福州南</span></td>
+						<td class="td3"><span>02车厢</span><span>无座</span><span>二等座</span></td>
+						<td class="td4"><span>代用名</span><span>二代身份证</span><span>341115199222066221</span></td>
+						<td class="td5"><span>邮寄</span><span>上海市宝山区2038号UDD旅游科技</span></td>
+						<td class="td6"><span>20元的火车意外伤害保险</span></td>
+						<td class="td7"><span>成人票<em>264.0元</em></span></td>
+					</tr>
+				</table>
+				<div class="sc_price"><span>总张数：<em>2</em></span><span>待支付金额：<b>528.0</b><i>元</i></span></div>
+			</div>
+		</div>
+		<!--查看订单弹出框结束-->
+	</div>	
+
+	<script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+	<script type="text/javascript" src="static/js/calendar.js"></script>
+
+	<script type="text/javascript">
+		$(function(){
+			//查看和关闭
+			$('.train_order .sea').click(function(){
+				$('.train_sc_tan').show();
+				$('.sc_mask').show();
+			})
+			$('.train_sc_tan .icon-close_per').click(function(){
+				$('.train_sc_tan').hide();
+				$('.sc_mask').hide();
+			})
+			//选择开始日期
+			var starttime = new CalendarPc("starttime",
+		  	{
+		  		direction:"after",
+		  		offsety:6,
+		  		display_num:2,
+		  	});
+		  	starttime.init();
+		  	//选择结束日期
+			var endtime = new CalendarPc("endtime",
+		  	{
+		  		direction:"after",
+		  		offsety:6,
+		  		display_num:2,
+		  	});
+		  	endtime.init();
+		})
+	</script>
+</body>
+</html>

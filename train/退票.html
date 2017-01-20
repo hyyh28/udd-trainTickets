@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+	<title>火车票</title>
+	<link href="http://www.uddtrip.com/css/base.css" type="text/css" rel="stylesheet">
+	<link rel="stylesheet" href="static/css/train.css">
+	<link rel="stylesheet" href="static/css/calendar.css">
+	<link rel="stylesheet" href="static/css/sprite/sprite.css" >
+	<link rel="shortcut icon" type="image/x-icon" href="http://www.uddtrip.com/img/favicon.ico" media="screen" />
+</head>
+<body>
+	<div class="main">
+		<div class="train_return">
+			<div class="train_crumbs"><span>您所在位置：</span><a href="#">我的游大大</a><i>></i><a href="#">火车票订单</a><i>></i><a href="#">申请退票</a></div>
+			<div class="train_returncon">
+				<p class="title">退票申请</p>
+				<div class="train_re_wra">
+					<div class="train_re_txt">
+						<i class="icon icon-erro"></i>
+						<p class="p1">温馨提示：</p>
+						<p>1. 预订成功后，如未取票且离产品内显示的火车发车时间大于35分钟（5月6日起生效），您可在线申请退票。预订成功后，如<span>已取票或离产品内显示的火车发车时间小于35分钟（5月6日起生效），请不要申请退票</span>，您须在发车前携带纸质车票及购票时使用的有效身份证件至发车地或取票地火车站的退票窗口办理退票。</p>
+						<p>2. 退票服务时间：6:00-23:00， 非退票服务时间内退票，您须在发车前携带纸质车票及购票时使用的有效身份证件至发车地或取票地火车站的退票窗口办理退票。</p>
+						<p>3. 铁路部门对发车前15天（不含）以上退的车票不收取手续费。</p>
+						<p>4. 对于15天以内的每张车票按梯次收取退票手续费：开车前49小时以上，手续费5%；开车前25-49小时之间，手续费10%；开车前25小时内，手续费20%。如退票成功，携程在收到铁路部门退款后，将差额部分退回原支付渠道，由银行将差额款项退回。（退款到账期：15个工作日）。</p>
+					</div>
+					<div class="checi"><span>车次：D3111</span><span>临海-台州</span><span>二等座</span><span>2016-10-27（星期四）</span><span>09:37出发</span></div>
+					<div class="peo"><i class="icon icon-dot_1"></i><span>成人票</span><span>李大大</span><span>身份证：6422251991****6221</span><span>二等座</span><span>12车厢04A号</span><span>6.5</span><span>保险0份</span></div>
+				</div>
+				<div class="contans"><span>联系人：李大大</span>联系电话：187****0759（退票申请提交后，我们将以短信的形式通知您退票结果，请以退票短信提示为准）</div>
+			</div>
+			<a href="#" class="train_returnlist"><i class="icon icon-arr-3"></i>返回订单列表页</a>
+			<input type="button" value="提交申请" class="train_returnbut">
+		</div>
+		<div class="sc_mask"></div>
+		<!--退票未选择车票-->
+		<div class="train__tui1">
+			<p class="p1">退票申请</p>
+			<p class="p2">请选择要退的车票！</p>
+			<span class="but">确定</span>
+		</div>
+		<!--退票未选择车票结束-->
+		<!--退票申请已提交-->
+		<div class="train_tui2">
+			<div class="train_tui2_wra">
+				<p class="p1">退票申请已提交</p>
+				<p class="p2">退票结果将在2小时后以短信的形式通知您</p>
+				<div><a href="#">查看订单详情</a><a href="#">返回订单列表</a><a href="#">返回我的游大大首页</a></div>
+			</div>
+		</div>
+		<!--退票申请已提交结束-->
+	</div>
+	<script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.train_return .peo i').click(function(){
+				$(this).toggleClass('icon-dot_1_cur');
+			})
+		})
+	</script>
+</body>
+</html>
